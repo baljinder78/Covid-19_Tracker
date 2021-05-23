@@ -1,6 +1,9 @@
 import React from 'react';
 import {Card,CardContent,Typography,Grid} from '@material-ui/core';
+
 import styles from './cards.module.css';
+
+
 import CountUp from 'react-countup';
 import cs from 'classnames';
 
@@ -12,6 +15,7 @@ const cards=({ data :{ confirmed, recovered, deaths, lastUpdate }}) =>
    }
 
     return(
+        
         <div className={styles.container}>
             <Grid container spacing={3} justify="center">
                 <Grid item component={Card} xs={12} md={3} className={cs(styles.card,styles.infected)}> 
@@ -41,14 +45,16 @@ const cards=({ data :{ confirmed, recovered, deaths, lastUpdate }}) =>
                             <CountUp  start={0}  end={deaths.value}  separator="," duration={2.5}/>
                         </Typography>
                         <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="body2">Total number of deths confirmed from Covid-19</Typography>
+                        <Typography variant="body2">Total number of deaths confirmed from Covid-19</Typography>
                     </CardContent>
                 </Grid>
-
             </Grid>
 
         </div>
     );
 }
+
+
+
 
 export default cards;

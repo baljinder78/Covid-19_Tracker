@@ -1,5 +1,6 @@
 import React, { useEffect , useState } from 'react';
 import {fetchDailydata} from '../../api/index';
+
 import {Line,Bar} from 'react-chartjs-2';
 
 import styles from './chart.module.css';
@@ -57,7 +58,7 @@ const Chart=({data :{ confirmed, recovered, deaths, lastUpdate },country}) =>
     
     const barchart=(
     
-        confirmed 
+        country
         ?
         (
             <Bar 
@@ -69,10 +70,7 @@ const Chart=({data :{ confirmed, recovered, deaths, lastUpdate },country}) =>
                     data:[confirmed.value,recovered.value,deaths.value],
                 }]
             }}
-            option={{
-                legend:{display:false},
-                title:{ display:true, text:`Current state in ${country}`},
-            }}
+            
             />
         )
         :
